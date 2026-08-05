@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
     body: JSON.stringify({ text: textOnly })
   })
     .then(response => response.json())
-    .then(data => console.log('API Response:', data))
-    .catch(error => console.error('API Error:', error));
+    .then(data => {
+      console.log('API Response:', data);
+    })
+    .catch(error => {
+      console.error('Full error:', error);
+      console.error('Error type:', error.name);
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    });
 });
